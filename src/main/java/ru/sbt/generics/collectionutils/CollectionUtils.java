@@ -1,51 +1,82 @@
 package ru.sbt.generics.collectionutils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class CollectionUtils{
+public class CollectionUtils<T>{
 
     public static <T> void addAll(List<? extends T> source, List<? super T> destination) {
         destination.addAll(source);
     }
 
-    public static List newArrayList() {
-        return new ArrayList<>();
+    public static <T> List<T> newArrayList() {
+        return new ArrayList<T>();
     }
 
-    public static int indexOf(List source, Object o) {
+    public static <T> int indexOf(List<? extends T> source, Object o) {
+        int index = -1;
 
+        for (int i = 0; i < source.size(); i++) {
+            if (source.get(i).equals(o)) {
+                return i;
+            }
+        }
+
+        return index;
     }
 
-    public static List limit(List source, int size) {
+    public static <T> List<T> limit(List<? extends T> source, int size) {
+        List<T> newList = new ArrayList<>();
 
+        for (int i = 0; i < size; i++) {
+            newList.add(source.get(i));
+        }
+
+        return newList;
     }
 
-    public static void add(List source, Object o) {
-
+    public static <T> void add(List<T> source, T o) {
+        source.add(o);
     }
 
-    public static void removeAll(List removeFrom, List c2) {
-
+    public static <T> void removeAll(List<? super T> removeFrom, List<? extends T> c2) {
+        for (int i = 0; i < c2.size(); i++) {
+            removeFrom.remove(c2.get(i));
+        }
     }
 
-    public static boolean containsAll(List c1, List c2) {
-
+    public static <T> boolean containsAll(List<? extends T> c1, List<? extends T> c2) {
+        return c2.containsAll(Collections.singletonList(c1));
     }
 
-    public static boolean containsAny(List c1, List c2) {
+    public static <T> boolean containsAny(List<? extends T> c1, List<? extends T> c2) {
+        boolean flag = false;
 
+        for (int i = 0; i < c1.size(); i++) {
+            if (c2.contains(c1.get(i))) {
+                flag = true;
+            }
+        }
+
+        return flag;
     }
 
-    public static List range(List list, Object min, Object max) {
-
+    public static <T> List range(List<? extends T> list, Object min, Object max) {
+        List<? extends T> newList = new ArrayList<>();
+        //Comparator
+        return newList;
     }
 
-    public static List range(List list, Object min, Object max, Comparator comparator) {
-
+    public static <T> List range(List<? extends T> list, Object min, Object max, Comparator comparator) {
+        List<? extends T> newList = new ArrayList<>();
+        //Comparator
+        return newList;
     }
 }
+
+//chas7610
 
 /*
 
