@@ -1,5 +1,6 @@
 package ru.sbt.generics.countmap;
 
+import java.util.Iterator;
 import java.util.Map;
 
 public class Main {
@@ -31,10 +32,5 @@ public class Main {
         System.out.println("size " + map.size());
 
         Map generatedMap = map.toMap();
-        /*
-        for (Map.Entry entry : generatedMap.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
-        */
     }
 }

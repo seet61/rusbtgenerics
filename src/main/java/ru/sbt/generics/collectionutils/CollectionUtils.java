@@ -49,7 +49,7 @@ public class CollectionUtils<T>{
     public static <T> List<? super T> limit(List<? extends T> source, int size) {
         List<? super T> newList = new ArrayList<>();
 
-        if (newList.size() > size) {
+        if (source.size() > size) {
             for (int i = 0; i < size; i++) {
                 newList.add(source.get(i));
             }
@@ -91,7 +91,7 @@ public class CollectionUtils<T>{
      * @return
      */
     public static <T> boolean containsAll(List<? extends T> c1, List<? extends T> c2) {
-        return c2.containsAll(Collections.singletonList(c1));
+        return c2.containsAll(c1);
     }
 
     /**
